@@ -15,7 +15,6 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-
 const Todos = (props) => {
   const { addTodo } = props;
   const [todo, setTodo] = useState('');
