@@ -26,12 +26,43 @@ body {
   flex-direction: column;
 }
 
+.Start-container {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: center;
+}
+
+.Start-container__title {
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+.Start-container__input {
+  margin-bottom: 1rem;
+}
+
+.Start-container__button {
+  background-color: transparent;
+  border: none;
+  color: #271c6c;
+  font-size: 3rem;
+  transition-duration: 0.7s;
+}
+
+.Start-container__button:hover {
+  color:#e1ebfd;
+}
+
 .Page-title {
   display: inline;
   text-align: center;
   margin-bottom: 2rem;
   color: #e1ebfd;
-
   text-shadow: 0 0 5px #433aa8, 3px -1px 5px #271c6c;
 }
 
@@ -40,18 +71,20 @@ body {
   justify-content: center;
 }
 
-.Todo-adder__input {
+.Todo-adder__input,
+.Start-container__input {
   min-width: 15rem;
   width: 40vw;
   max-height: 2.5rem;
   background-color: #e1ebfd;
-  border: none;
+  border: 2px solid transparent;
   border-radius: 5px;
   padding: 0.5rem 1rem;
   align-self: center;
 }
 
-.Todo-adder__input:focus {
+.Todo-adder__input:focus,
+.Start-container__input:focus {
   outline: none;
   border: 2px solid #433aa8
 }
