@@ -3,7 +3,7 @@ import Todos from './Todos';
 import DisplayTodos from './DisplayTodos';
 import { useLocation } from 'react-router-dom';
 
-const TodoPage = () => {
+const TodoPage: React.FC = () => {
   const location = useLocation();
   const { userName } = location.state;
   
