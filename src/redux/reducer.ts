@@ -1,21 +1,22 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { Todo } from '../types/Todo';
 
-const initialState = [];
+const initialState: Todo[] = [];
 
 const addTodoReducer = createSlice({
   name: 'todos',
   initialState,
   reducers: {
-    addTodos: (state, action) => {
+    addTodos: (state, action: PayloadAction<Todo>) => {
       state.push(action.payload);
       return state;
     },
 
-    removeTodos: (state, action) => {
+    removeTodos: (state, action: PayloadAction<number>) => {
       return state.filter(todo => todo.id !== action.payload);
     },
 
-    updateTodos: (state, action) => {
+    updateTodos: (state, action: PayloadAction<Todo>) => {
       return state.map(todo => {
         if (todo.id === action.payload.id) {
           return {
@@ -28,7 +29,7 @@ const addTodoReducer = createSlice({
       });
     },
 
-    completeTodos: (state, action) => {
+    completeTodos: (state, action: PayloadAction<number>) => {
       return state.map(todo => {
         if (todo.id === action.payload) {
           return {

@@ -4,12 +4,12 @@ import TodoPage from './components/TodoPage';
 import './styles/main.css';
 import { Routes, Route } from "react-router-dom";
 
-function App() {
+const App: React.FC = () =>{
   return (
     <div className="App">
       <Routes>
-        <Route exact path='/' element={<Start />} />
-        <Route exact path='/todos' element={<TodoPage />} />
+        <Route path='/' element={<Start />} />
+        <Route path='/todos' element={<TodoPage />} />
       </Routes>
     </div>
   );

@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Start = () => {
+const Start: React.FC = () => {
   const [name, setName] = useState('');
   const navigate = useNavigate();
 
-  const clickHandler = (event) => {
+  const clickHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
     if (name === '') {
       alert('Name is empty!!! Please, provide your name!');
     } else {
@@ -17,7 +17,7 @@ const Start = () => {
     }
   }
 
-  const handleChange = (event) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
 
     setName(value);
