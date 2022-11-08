@@ -8,7 +8,7 @@ const App: React.FC = () =>{
   return (
     <div className="App">
       <Routes>
-        <Route path='/react_intensive_todo-app.git' element={<Start />} />
+        <Route path='/' element={<Start />} />
         <Route path='/todos' element={<TodoPage />} />
       </Routes>
     </div>
