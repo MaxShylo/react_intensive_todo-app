@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/MaxShylo/react_intensive_todo-app.git/static/css/main.9dd646a5.css",
-    "main.js": "/MaxShylo/react_intensive_todo-app.git/static/js/main.305e4252.js",
-    "static/js/787.65e497dd.chunk.js": "/MaxShylo/react_intensive_todo-app.git/static/js/787.65e497dd.chunk.js",
-    "index.html": "/MaxShylo/react_intensive_todo-app.git/index.html",
-    "main.9dd646a5.css.map": "/MaxShylo/react_intensive_todo-app.git/static/css/main.9dd646a5.css.map",
-    "main.305e4252.js.map": "/MaxShylo/react_intensive_todo-app.git/static/js/main.305e4252.js.map",
-    "787.65e497dd.chunk.js.map": "/MaxShylo/react_intensive_todo-app.git/static/js/787.65e497dd.chunk.js.map"
+    "main.css": "/react_intensive_todo-app.git/static/css/main.9dd646a5.css",
+    "main.js": "/react_intensive_todo-app.git/static/js/main.07f6e795.js",
+    "static/js/787.65e497dd.chunk.js": "/react_intensive_todo-app.git/static/js/787.65e497dd.chunk.js",
+    "index.html": "/react_intensive_todo-app.git/index.html",
+    "main.9dd646a5.css.map": "/react_intensive_todo-app.git/static/css/main.9dd646a5.css.map",
+    "main.07f6e795.js.map": "/react_intensive_todo-app.git/static/js/main.07f6e795.js.map",
+    "787.65e497dd.chunk.js.map": "/react_intensive_todo-app.git/static/js/787.65e497dd.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.9dd646a5.css",
-    "static/js/main.305e4252.js"
+    "static/js/main.07f6e795.js"
   ]
 }
