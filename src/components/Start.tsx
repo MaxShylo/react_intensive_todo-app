@@ -5,7 +5,9 @@ const Start: React.FC = () => {
   const [name, setName] = useState('');
   const navigate = useNavigate();
 
-  const clickHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const clickHandler = (event: React.SyntheticEvent) => {
+    event.preventDefault();
+
     if (name === '') {
       alert('Name is empty!!! Please, provide your name!');
     } else {
@@ -24,7 +26,10 @@ const Start: React.FC = () => {
   }
 
   return (
-    <div className="Start-container">
+    <form
+      className="Start-container"
+      onSubmit={clickHandler}
+    >
       <h1
         className='Start-container__title'
       >
@@ -43,7 +48,7 @@ const Start: React.FC = () => {
         onClick={clickHandler}>
         Start
       </button>
-    </div>
+    </form>
   )
 }
 

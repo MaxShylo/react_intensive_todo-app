@@ -1,6 +1,7 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import { AiFillEdit } from 'react-icons/ai';
 import { IoCheckmarkDoneSharp, IoClose } from 'react-icons/io5';
+import { motion } from 'framer-motion';
 
 const TodoItem = (props) => {
   const { todo, removeTodo, updateTodo, completeTodo } = props;
@@ -20,7 +21,28 @@ const TodoItem = (props) => {
   }
 
   return (
-    <li key={todo.id} className="Todo-item">
+    <motion.li
+      initial={{
+        x: "150vw",
+        transition: { type: "spring", duration: 2 },
+      }}
+      animate={{
+        x: 0,
+        transition: { type: "spring", duration: 2 },
+      }}
+      whileHover={{
+        scale: 0.9,
+        transition: { type: "spring", duration: 1 },
+      }}
+      exit={{
+        x: "-60vw",
+        scale: [1, 0],
+        transition: { duration: 0.5 },
+        backgroundColor: "rgba(255,0,0,1)",
+      }}
+      key={todo.id}
+      className="Todo-item"
+    >
       <textarea
         className='Todo-item__input'
         ref={inputRef}
@@ -30,33 +52,39 @@ const TodoItem = (props) => {
       />
 
       <div className="Todo-item___btns">
-        <button
+        <motion.button
+          whileHover={{ scale: 1.4 }}
+          whileTap={{ scale: 0.9 }}
           className="Todo-item___button"
           onClick={() => changeFocus()}
         >
           <AiFillEdit />
-        </button>
+        </motion.button>
 
         {
           !todo.completed && (
-            <button
+            <motion.button
+              whileHover={{ scale: 1.4 }}
+              whileTap={{ scale: 0.9 }}
               className="Todo-item___button Todo-item___button--completed"
               onClick={() => completeTodo(todo.id)}
             >
               <IoCheckmarkDoneSharp />
-            </button>
+            </motion.button>
           )
         }
 
-        <button
+        <motion.button
+          whileHover={{ scale: 1.4 }}
+          whileTap={{ scale: 0.9 }}
           className="Todo-item___button Todo-item___button--delete"
           onClick={() => removeTodo(todo.id)}
         >
           <IoClose />
-        </button>
+        </motion.button>
       </div>
       {todo.completed && <span className='Todo-item__completed'>done</span>}
-    </li>
+    </motion.li>
   );
 };
 

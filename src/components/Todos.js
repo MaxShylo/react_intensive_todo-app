@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { addTodos } from '../redux/reducer';
 import { GoPlus } from 'react-icons/go';
+import { motion } from 'framer-motion';
 
 const mapStateToProps = (state) => {
   return {
@@ -25,7 +26,9 @@ const Todos = (props) => {
     setTodo(value);
   };
 
-  const add = () => {
+  const add = (event) => {
+    event.preventDefault();
+
     if (todo === '') {
       alert('Todo is empty!!! Please, put Todo!!!');
     } else {
@@ -40,7 +43,10 @@ const Todos = (props) => {
   }
 
   return (
-    <div className='Todo-adder'>
+    <form
+      className='Todo-adder'
+      onSubmit={add}
+    >
 
       <input
         type="text"
@@ -49,15 +55,17 @@ const Todos = (props) => {
         value={todo}
       />
 
-      <button
+      <motion.button
+        whileHover={{ scale: 1.2 }}
+        whileTap={{ scale: 0.9 }}
         className="Todo-adder__add-btn"
-        onClick={() => add()}
+        onClick={add}
       >
         <GoPlus />
-      </button>
+      </motion.button>
       <br />
 
-    </div>
+    </form>
   );
 };
 

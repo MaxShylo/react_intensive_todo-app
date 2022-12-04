@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { connect } from 'react-redux';
 import { addTodos, completeTodos, removeTodos, updateTodos } from '../redux/reducer';
 import TodoItem from './TodoItem';
+import { motion, AnimatePresence } from 'framer-motion';
+import classNames from 'classnames';
 
 const mapStateToProps = (state) => {
   return {
@@ -26,34 +28,85 @@ const DisplayTodos = (props) => {
   return (
     <div className="Display-todos">
       <div className="Display-todos__buttons">
-        <button
-          className="Display-todos__btn -active"
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          className={classNames(
+            'Display-todos__btn',
+            {'is-active': sort === 'active'}
+          )}
           onClick={() => setSort('active')}
         >
           Active
-        </button>
+        </motion.button>
 
-        <button
-          className="Display-todos__btn -completed"
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          className={classNames(
+            'Display-todos__btn',
+            {'is-active': sort === 'completed'}
+          )}
           onClick={() => setSort('completed')}
         >
           Completed
-        </button>
+        </motion.button>
 
-        <button
-          className="Display-todos__btn -all"
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          className={classNames(
+            'Display-todos__btn',
+            {'is-active': sort === 'all'}
+          )}
           onClick={() => setSort('all')}
         >
           All
-        </button>
+        </motion.button>
       </div>
 
       <ul className="Display-todos__list">
-        {
-          todos.length > 0 && sort === 'active'
-            ? (todos.map(todo => {
-              return (
-                todo.completed === false && (
+        <AnimatePresence>
+          {
+            todos.length > 0 && sort === 'active'
+              ? (todos.map(todo => {
+                return (
+                  todo.completed === false && (
+                    <TodoItem
+                      key={todo.id}
+                      todo={todo}
+                      removeTodo={removeTodo}
+                      updateTodo={updateTodo}
+                      completeTodo={completeTodo}
+                    />
+                  )
+                )
+              }))
+              : null
+          }
+
+          {
+            (todos.length > 0 && sort === 'completed')
+              ? (todos.map(todo => {
+                return (
+                  todo.completed === true && (
+                    <TodoItem
+                      key={todo.id}
+                      todo={todo}
+                      removeTodo={removeTodo}
+                      updateTodo={updateTodo}
+                      completeTodo={completeTodo}
+                    />
+                  )
+                )
+              }))
+              : null
+          }
+
+          {
+            (todos.length > 0 && sort === 'all')
+              ? (todos.map(todo => {
+                return (
                   <TodoItem
                     key={todo.id}
                     todo={todo}
@@ -62,44 +115,10 @@ const DisplayTodos = (props) => {
                     completeTodo={completeTodo}
                   />
                 )
-              )
-            }))
-            : null
-        }
-
-        {
-          (todos.length > 0 && sort === 'completed')
-            ? (todos.map(todo => {
-              return (
-                todo.completed === true && (
-                  <TodoItem
-                    key={todo.id}
-                    todo={todo}
-                    removeTodo={removeTodo}
-                    updateTodo={updateTodo}
-                    completeTodo={completeTodo}
-                  />
-                )
-              )
-            }))
-            : null
-        }
-
-        {
-          (todos.length > 0 && sort === 'all')
-            ? (todos.map(todo => {
-              return (
-                <TodoItem
-                  key={todo.id}
-                  todo={todo}
-                  removeTodo={removeTodo}
-                  updateTodo={updateTodo}
-                  completeTodo={completeTodo}
-                />
-              )
-            }))
-            : null
-        }
+              }))
+              : null
+          }
+        </AnimatePresence>
       </ul>
     </div>
   );
